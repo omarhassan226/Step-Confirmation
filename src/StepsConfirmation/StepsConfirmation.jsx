@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react'
+import Button from './components/Button';
 
 const StepsConfirmation = () => {
 
@@ -17,6 +18,18 @@ const StepsConfirmation = () => {
         setIsOpen(isOpen => !isOpen);
         setIcon(icon => isOpen ? "+" : "x");
     }
+
+    const handleNext = () => {
+        if (step < messages.length) {
+            setStep(step => step + 1);
+        }
+    }
+
+    const handlePrevious = () => {
+        if (step !== 1) {
+            setStep(step - 1);
+        }
+    }
     return (
         <div>
             <div className="close" onClick={toggle}>{icon}</div>
@@ -32,25 +45,22 @@ const StepsConfirmation = () => {
                         Step {step} : {messages[step - 1]}
                     </div>
                     <div className="buttons">
-                        <button
-                            style={{ backgroundColor: "#7950f2", color: "#fff" }}
-                            onClick={() => {
-                                step < messages.length && setStep(step + 1);
-                            }}
+                        <Button
+                            backgroundColor= "#7950f2"
+                            color= "#fff" 
+                            onClick={handlePrevious}
                         >
-                            Next
-                        </button>
-                        <button
-                            style={{ backgroundColor: "#7950f2", color: "#fff" }}
-                            onClick={() => {
-                                step !== 1 && setStep(step - 1);
-                            }}
+                            <span>👈</span> Previous
+                        </Button>
+                        <Button
+                            backgroundColor= "#7950f2"
+                            color= "#fff" 
+                            onClick={handleNext}
                         >
-                            Previous
-                        </button>
+                            Next <span>👉</span>
+                        </Button>
                     </div>
                 </div>
-
             }
         </div>
     )

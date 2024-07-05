@@ -1,5 +1,5 @@
 import './App.css'
-import StepsConfirmation from './StepsConfirmation'
+import StepsConfirmation from './StepsConfirmation/StepsConfirmation'
 
 function App() {
 
